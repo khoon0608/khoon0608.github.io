@@ -7,26 +7,56 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/background.css" />
-    <link rel="stylesheet" href="css/clock.css" />
+    <link rel="stylesheet" href="css/clockweather.css" />
     <link rel="stylesheet" href="css/greeting.css" />
     <link rel="stylesheet" href="css/login.css" />
     <link rel="stylesheet" href="css/todo-list.css" />
   </head>
   <body>
-    <section id="clock-weather"></section>
-    <section id="login" class="hidden">
-      <form class="login-form">
-        <input type="text" class="todo-input" />
-        <button class="todo-btn">LOGIN</button>
-      </form>
-    </section>
-    <section id="main" class="hidden">
-      <div class="header"></div>
-      <div class="center">
-        <span class="greeting"></span>
-      </div>
-      <div class="bottom"></div>
+    <section class="image">
+      <section id="clock-weather">
+        <div class="empty"></div>
+        <div class="clock">
+          <span class="date"></span>
+          <span class="time"></span>
+        </div>
+        <div class="weatherCity">
+          <span class="weather"></span>
+          <span class="city"></span>
+        </div>
+      </section>
+      <section id="login" class="login-section">
+        <form class="login-form">
+          <input
+            placeholder="계정을 입력하세요"
+            type="text"
+            class="login-input"
+            required
+          />
+        </form>
+      </section>
+      <section id="main" class="hidden">
+        <div class="header"></div>
+        <div class="center">
+          <span class="greeting"></span>
+          <div class="todo">
+            <form class="todo-form">
+              <input
+                type="text"
+                class="todo-input"
+                placeholder="Write down what you make better!"
+                required
+              />
+            </form>
+            <ul class="todo-list"></ul>
+          </div>
+        </div>
+        <div class="bottom"></div>
+      </section>
     </section>
     <script src="js/login.js"></script>
+    <script src="js/clock.js"></script>
+    <script src="js/weather.js"></script>
+    <script src="js/background.js"></script>
   </body>
 </html>

@@ -1,0 +1,11 @@
+.center {
+  border: 3px solid blue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.greeting {
+  border: 3px solid peru;
+  font-size: 30px;
+}
