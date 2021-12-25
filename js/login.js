@@ -1,3 +1,4 @@
+const loginSection = document.querySelector("#login");
 const loginForm = document.querySelector("#login form");
 const main = document.querySelector("#main");
 const loginInput = document.querySelector("#login input");
@@ -6,7 +7,12 @@ const logoutBtn = document.querySelector("#logout-btn");
 
 const ACCOUNT_KEY = "account";
 const HIDDEN_CLASS = "hidden";
+let timeCheck = new Date().getHours();
+setInterval(setTime,(1000*60*5));
 
+function setTime(){
+    timeCheck = new Date().getHours();
+}
 
 function login(event){
     event.preventDefault();
@@ -22,16 +28,23 @@ function savedlocal(){
 
 function showGreeting(){
     const loginAccount = localStorage.getItem(ACCOUNT_KEY);
-    greeting.innerHTML = `Hello! <strong>${loginAccount}</strong> </br> Have a nice day!`;
+    if(timeCheck > 5 && timeCheck <= 12){
+        greeting.innerHTML = `Good morning, ${loginAccount}`;
+    } else if(timeCheck > 12 && timeCheck<=17){
+        greeting.innerHTML = `Good afternoon, ${loginAccount}`;
+    }   else   {
+        greeting.innerHTML = `Good evening, ${loginAccount}`;
+    }
+    
 }
 
 function beforeLogin(){
     main.classList.add(HIDDEN_CLASS);
-    loginForm.classList.remove(HIDDEN_CLASS);
+    loginSection.classList.remove(HIDDEN_CLASS);
 }
 
 function afterLogin(){
-    loginForm.classList.add(HIDDEN_CLASS);
+    loginSection.classList.add(HIDDEN_CLASS);
     main.classList.remove(HIDDEN_CLASS);
 }
 
