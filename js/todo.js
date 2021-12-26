@@ -18,6 +18,27 @@ function deleteToDo(event){
     console.log(toDos);
 }
 
+function completeToDo(event){
+    const li = event.target.parentElement.parentElement;
+    const span = li.querySelector("span")
+    const cplButton = li.querySelector(".todo-complete")
+    for (const i in toDos){
+        if(toDos[i].id === parseInt(li.id)){
+            if(toDos[i].check === true){
+                span.classList.remove("complete");
+                cplButton.innerText="⬜";
+                toDos[i].check = false;
+            }   else    {
+                span.classList.add("complete");
+                cplButton.innerText="✅";
+                toDos[i].check = true;
+            }
+            
+        }
+    }
+    saveToDos();
+}
+
 function generateToDO(event){
     event.preventDefault();
     const newToDo = todoInput.value;
@@ -46,15 +67,19 @@ function PrintToDo(newToDoObj){
     delButton.addEventListener("click", deleteToDo);
     const cplButton = document.createElement("button");
     cplButton.setAttribute("class","todo-complete");
-    //cplButton.addEventListener("click", completeToDo);
+    cplButton.addEventListener("click",completeToDo);
     cplButton.innerText="⬜";
     todoList.appendChild(li);
     li.appendChild(span);
     li.appendChild(div);
-    div.appendChild(delButton);
     div.appendChild(cplButton);
+    div.appendChild(delButton);
 
     span.innerText = `${newToDoObj.text}`;
+    if(newToDoObj.check === true){
+        span.classList.add("complete");
+        cplButton.innerText="✅";
+    }
 }
 
 
